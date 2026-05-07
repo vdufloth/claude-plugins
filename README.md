@@ -27,6 +27,23 @@ To pull updates later:
 | Skill | Invocation | Description |
 |-------|------------|-------------|
 | `devils-advocate` | `/vdufloth:devils-advocate [path-to-plan.md]` | Iteratively harden a design doc or implementation plan through multiple rounds of devil's advocate critique. |
+| `code-style` | `/vdufloth:code-style` (or auto-invoked when writing/editing/reviewing code) | Personal coding conventions: function/file size, naming, explicit types, dependency injection, tests, structure, formatting, logging. |
+
+### Always-on enforcement (optional)
+
+Skills are auto-invoked based on description matching, which is a soft guarantee. To make `code-style` apply to **every** Claude Code session on a machine, install the rules into your user-level `~/.claude/CLAUDE.md`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/vdufloth/claude-plugins/main/scripts/install-code-style.sh | bash
+```
+
+Or from a clone:
+
+```bash
+bash scripts/install-code-style.sh
+```
+
+The script writes a self-contained, marker-delimited block into `~/.claude/CLAUDE.md`. Re-run it any time to refresh the rules in place — it's idempotent.
 
 ## Repository structure
 
@@ -34,13 +51,17 @@ To pull updates later:
 .
 ├── .claude-plugin/
 │   └── marketplace.json           # marketplace manifest
-└── plugins/
-    └── vdufloth/                  # the plugin
-        ├── .claude-plugin/
-        │   └── plugin.json        # plugin manifest
-        └── skills/
-            └── devils-advocate/
-                └── SKILL.md
+├── plugins/
+│   └── vdufloth/                  # the plugin
+│       ├── .claude-plugin/
+│       │   └── plugin.json        # plugin manifest
+│       └── skills/
+│           ├── code-style/
+│           │   └── SKILL.md
+│           └── devils-advocate/
+│               └── SKILL.md
+└── scripts/
+    └── install-code-style.sh      # bootstrap code-style into ~/.claude/CLAUDE.md
 ```
 
 ## Adding a new skill
