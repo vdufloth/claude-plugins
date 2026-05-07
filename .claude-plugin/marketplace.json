@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "vdufloth-claude-plugins",
+  "description": "Vinicius Dufloth's personal Claude Code plugin marketplace",
+  "owner": {
+    "name": "vdufloth",
+    "url": "https://github.com/vdufloth"
+  },
+  "metadata": {
+    "version": "0.1.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "vdufloth",
+      "source": "./plugins/vdufloth",
+      "description": "Personal Claude Code skills",
+      "category": "personal",
+      "keywords": ["personal", "skills"]
+    }
+  ]
+}
